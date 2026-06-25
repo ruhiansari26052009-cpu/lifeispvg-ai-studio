@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>lifeispvg AI Studio</title>
+  <style>
+    body{
+      background:#0b0615;
+      color:white;
+      font-family:Arial;
+      text-align:center;
+      padding:40px;
+    }
+    textarea{
+      width:90%;
+      height:120px;
+      background:#1b102c;
+      color:white;
+      border:none;
+      padding:10px;
+      border-radius:10px;
+    }
+    button{
+      margin-top:20px;
+      padding:15px 30px;
+      background:#8a2be2;
+      color:white;
+      border:none;
+      border-radius:10px;
+      font-size:18px;
+    }
+    img{
+      width:90%;
+      margin-top:20px;
+      border-radius:15px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>lifeispvg AI Studio</h1>
+
+<textarea id="prompt" placeholder="Enter your prompt"></textarea>
+
+<br>
+
+<button onclick="generate()">Generate</button>
+
+<div id="result"></div>
+
+<script>
+function generate(){
+  let prompt=document.getElementById("prompt").value;
+
+  let url="https://image.pollinations.ai/prompt/"+encodeURIComponent(prompt+" ultra realistic cinematic lighting 8k human realistic face");
+
+  document.getElementById("result").innerHTML=
+  "<img src='"+url+"'>";
+}
+</script>
+
+</body>
+</html>
