@@ -1,61 +1,115 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>lifeispvg AI Studio</title>
-  <style>
-    body{
-      background:#0b0615;
-      color:white;
-      font-family:Arial;
-      text-align:center;
-      padding:40px;
-    }
-    textarea{
-      width:90%;
-      height:120px;
-      background:#1b102c;
-      color:white;
-      border:none;
-      padding:10px;
-      border-radius:10px;
-    }
-    button{
-      margin-top:20px;
-      padding:15px 30px;
-      background:#8a2be2;
-      color:white;
-      border:none;
-      border-radius:10px;
-      font-size:18px;
-    }
-    img{
-      width:90%;
-      margin-top:20px;
-      border-radius:15px;
-    }
-  </style>
+<title>lifeispvg AI Studio</title>
+
+<style>
+body{
+  background:#0b0615;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  padding:30px;
+}
+
+h1{
+  color:#b56cff;
+}
+
+textarea{
+  width:90%;
+  height:120px;
+  background:#1a1027;
+  color:white;
+  border:none;
+  padding:15px;
+  border-radius:12px;
+}
+
+button{
+  margin:10px;
+  padding:15px 25px;
+  background:#8a2be2;
+  color:white;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+}
+
+select{
+  padding:10px;
+  border-radius:10px;
+  margin:10px;
+}
+
+#result{
+  margin-top:20px;
+}
+img{
+  width:90%;
+  border-radius:15px;
+  margin-top:20px;
+}
+.watermark{
+  margin-top:30px;
+  opacity:0.6;
+}
+</style>
 </head>
+
 <body>
 
 <h1>lifeispvg AI Studio</h1>
 
-<textarea id="prompt" placeholder="Enter your prompt"></textarea>
+<p>Create Realistic Documentary Content</p>
+
+<textarea id="prompt" placeholder="Enter your prompt here..."></textarea>
 
 <br>
 
-<button onclick="generate()">Generate</button>
+<select id="mode">
+  <option>Facebook Reel 9:16</option>
+  <option>Instagram Reel 9:16</option>
+  <option>YouTube Documentary 16:9</option>
+</select>
+
+<br>
+
+<button onclick="generateImage()">Generate Image</button>
+<button onclick="generateVideo()">Generate Video</button>
 
 <div id="result"></div>
 
+<div class="watermark">
+Powered by lifeispvg
+</div>
+
 <script>
-function generate(){
-  let prompt=document.getElementById("prompt").value;
 
-  let url="https://image.pollinations.ai/prompt/"+encodeURIComponent(prompt+" ultra realistic cinematic lighting 8k human realistic face");
+function generateImage(){
+let prompt = document.getElementById("prompt").value;
 
-  document.getElementById("result").innerHTML=
-  "<img src='"+url+"'>";
+let finalPrompt =
+prompt +
+" ultra realistic documentary scene cinematic lighting 8k highly detailed realistic human face";
+
+let url =
+"https://image.pollinations.ai/prompt/" +
+encodeURIComponent(finalPrompt);
+
+document.getElementById("result").innerHTML =
+"<h3>Generated Image</h3><img src='"+url+"'>";
 }
+
+function generateVideo(){
+let prompt = document.getElementById("prompt").value;
+
+document.getElementById("result").innerHTML =
+"<h3>Video generation mode selected</h3>" +
+"<p>Prompt: " + prompt + "</p>" +
+"<p>AI Video backend will connect here later.</p>";
+}
+
 </script>
 
 </body>
